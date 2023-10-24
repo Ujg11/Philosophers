@@ -45,9 +45,13 @@ int	check_args(char *argv[], int argc);
 
 //utils.c
 int	is_a_num(char *s);
+int	ft_atoi_basic(const char *str);
 
 //init.c
 int	init_all(t_data *data, char **argv, int argc);
 int	ft_atoi_basic(const char *str);
+
+//errors.c
+int	destroy_all(t_data *data);
 
 #endif
