@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/25 11:28:37 by ojimenez          #+#    #+#              #
+#    Updated: 2023/10/25 17:06:51 by ojimenez         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = philo
 
 CC = gcc
@@ -5,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=aadress -g
 
 HEADER = philosophers.h
 
-OBJECTS = main.o
+OBJECTS = main.o check_arguments.o init.o errors.o utils.o thread.o
 
 all: $(NAME)
 

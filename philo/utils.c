@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 11:28:57 by ojimenez          #+#    #+#             */
+/*   Updated: 2023/10/25 13:55:33 by ojimenez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
 int	is_a_num(char *s)
@@ -27,4 +39,14 @@ int	ft_atoi_basic(const char *str)
 		i++;
 	}
 	return (res);
+}
+
+//devuelve el tiempo en milisegundos
+uint64_t	get_time(void)
+{
+	struct timeval	t;
+
+	if (gettimeofday(&t, NULL))
+		return (-1);
+	return ((uint64_t)(t.tv_sec * 1000 + t.tv_usec / 1000));
 }
