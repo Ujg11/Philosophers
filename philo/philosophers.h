@@ -23,6 +23,8 @@
 # define EATING 1
 # define SLEEPING 2
 # define THINKING 3
+# define DEAD 4
+# define FORK 5
 
 
 typedef struct s_data
@@ -64,6 +66,7 @@ int			check_args(char *argv[], int argc);
 int			is_a_num(char *s);
 int			ft_atoi_basic(const char *str);
 uint64_t	get_time(void);
+char		*str_state(int action);
 
 //init.c
 int			init_all(t_data *data, char **argv, int argc);
@@ -71,5 +74,12 @@ int			ft_atoi_basic(const char *str);
 
 //errors.c
 int			destroy_all(t_data *data);
+
+//thread.c
+int			init_threads(t_data *data);
+
+//state_change.c
+void		print_message(int action, t_philo *philo);
+void		thread_eat_and_sleep(t_philo *philo);
 
 #endif

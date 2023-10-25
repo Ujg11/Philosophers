@@ -50,3 +50,17 @@ uint64_t	get_time(void)
 		return (-1);
 	return ((uint64_t)(t.tv_sec * 1000 + t.tv_usec / 1000));
 }
+
+char	*str_state(int action)
+{
+	if (action == EATING)
+		return ("is eating");
+	else if (action == SLEEPING)
+		return ("is sleeping");
+	else if (action == THINKING)
+		return ("is thinking");
+	else if (action == DEAD)
+		return ("died");
+	else if (action == FORK)
+		return ("has taken a fork");
+}

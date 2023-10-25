@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=aadress -g
 
 HEADER = philosophers.h
 
-OBJECTS = main.o check_arguments.o init.o errors.o utils.o thread.o
+OBJECTS = main.o check_arguments.o init.o errors.o utils.o thread.o state_change.o
 
 all: $(NAME)
 
