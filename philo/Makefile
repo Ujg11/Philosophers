@@ -6,14 +6,14 @@
 #    By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/25 11:28:37 by ojimenez          #+#    #+#              #
-#    Updated: 2023/10/25 17:06:51 by ojimenez         ###   ########.fr        #
+#    Updated: 2023/10/27 11:37:23 by ojimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=aadress -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 HEADER = philosophers.h
 
@@ -32,7 +32,7 @@ clean:
 	rm -f $(OBJECTS)
 	@echo "Clean done, objects removed"
 
-fclean: Clean
+fclean: clean
 	rm -f $(NAME)
 	@echo "FClean done, all removed"
 

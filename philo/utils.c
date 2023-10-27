@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:57 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/25 13:55:33 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:38:30 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,6 @@ char	*str_state(int action)
 		return ("died");
 	else if (action == FORK)
 		return ("has taken a fork");
+	else
+		return ("ERROR");
 }

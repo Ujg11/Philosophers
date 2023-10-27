@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:10 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/25 16:01:48 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:48:02 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_data(t_data *data, char **argv, int argc)
 	data->time_to_die = (uint64_t)ft_atoi_basic(argv[2]);
 	data->time_to_eat = (uint64_t)ft_atoi_basic(argv[3]);
 	data->time_to_sleep = (uint64_t)ft_atoi_basic(argv[4]);
-	if (argc == 5)
+	if (argc == 6)
 		data->number_of_eats = ft_atoi_basic(argv[5]);
 	else
 		data->number_of_eats = -1;
@@ -27,8 +27,8 @@ int	init_data(t_data *data, char **argv, int argc)
 		return (1);
 	data->all_eaten = 0;
 	data->dead = 0;
-	pthrad_mutex_init(&data->write, NULL);
-	pthrad_mutex_init(&data->lock, NULL);
+	pthread_mutex_init(&data->write, NULL);
+	pthread_mutex_init(&data->lock, NULL);
 	return (0);
 }
 
@@ -66,7 +66,6 @@ void	init_forks(t_data *data)
 		data->philos[i].right_fork = &data->forks[i - 1];
 		i++;
 	}
-	return (0);
 }
 
 void	init_philos(t_data *data)
@@ -88,8 +87,6 @@ void	init_philos(t_data *data)
 
 int	init_all(t_data *data, char **argv, int argc)
 {
-	int	comp;
-
 	if (init_data(data, argv, argc))
 		return (1);
 	if (alloc_data(data))

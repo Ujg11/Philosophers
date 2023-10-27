@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
+/*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:27:37 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/25 11:27:40 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:43:21 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	print_param(void)
 {
-	printf("Format dels parametres: \number_of_philosophers time to die time_to_eat");
-	printf("time_to_slep number_of_times_each_philosopher_must_eat(opcional)");
+	printf("Format dels parametres: \nnumber_of_philosophers time_to_die ");
+	printf("time_to_eat time_to_sleep");
+	printf(" number_of_times_each_philosopher_must_eat(opcional)\n");
 	return (1);
 }
 

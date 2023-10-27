@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:47 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/25 16:45:01 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:56:46 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@
 # define DEAD 4
 # define FORK 5
 
+struct	s_philo;
 
 typedef struct s_data
 {
 	pthread_t		*t_id;
-	t_philo			*philos;
+	struct s_philo	*philos;
 	int				num_philo;
 	uint64_t		time_to_die;
 	uint64_t		time_to_eat;
@@ -57,7 +58,6 @@ typedef struct s_philo
 	int				action;
 }				t_philo;
 
-
 //check_arguments
 int			print_param(void);
 int			check_args(char *argv[], int argc);
@@ -70,13 +70,13 @@ char		*str_state(int action);
 
 //init.c
 int			init_all(t_data *data, char **argv, int argc);
-int			ft_atoi_basic(const char *str);
 
 //errors.c
 int			destroy_all(t_data *data);
 
 //thread.c
 int			init_threads(t_data *data);
+void		*th_routine(void *p);
 
 //state_change.c
 void		print_message(int action, t_philo *philo);
