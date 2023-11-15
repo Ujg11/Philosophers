@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:55:08 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/27 14:27:52 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:00:37 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	*th_supervisor(void *p)
 	philo = (t_philo *)p;
 	while (philo->data->dead == 0)
 	{
-		printf("Data dead a fora = %d\n", philo->data->dead);
 		pthread_mutex_lock(&philo->lock);
 		if (get_time() >= philo->time_to_die && philo->action != EATING)
 			print_message(DEAD, philo);
@@ -56,7 +55,9 @@ void	*th_routine(void *p)
 	t_philo	*philo;
 
 	philo = (t_philo *)p;
-	philo->time_to_die = philo->data->time_to_die + get_time();
+	philo->time_to_die = get_time() + philo->data->time_to_die;
+	if (philo->id == 2)
+		usleep(100);
 	if (pthread_create(&philo->thread, NULL, &th_supervisor, (void *)philo))
 		return ((void *)1);
 	while (philo->data->dead == 0)
@@ -86,7 +87,6 @@ int	init_threads(t_data *data)
 		if (pthread_create(&data->t_id[i], NULL, &th_routine, &data->philos[i]))
 			return (destroy_all(data));
 		i++;
-		usleep(1);
 	}
 	i = 0;
 	while (i < data->num_philo)

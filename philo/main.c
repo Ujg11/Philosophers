@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:25 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/27 12:28:15 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:15:12 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	one_philo(t_data *data)
 	if (pthread_create(&data->t_id[0], NULL, &th_routine, &data->philos[0]))
 		return (destroy_all(data));
 	pthread_detach(data->t_id[0]);
-	while (!data->dead)
-		usleep(0);
+	while (data->dead == 0)
+		usleep(10);
 	destroy_all(data);
 	return (0);
 }

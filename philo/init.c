@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:10 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/27 11:48:02 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:15:46 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	init_data(t_data *data, char **argv, int argc)
 		data->number_of_eats = ft_atoi_basic(argv[5]);
 	else
 		data->number_of_eats = -1;
-	if (data->num_philo < 2 || data->time_to_die < 0 || data->time_to_eat < 0
+	if (data->num_philo < 1 || data->time_to_die < 0 || data->time_to_eat < 0
 		|| data->time_to_sleep < 0)
 		return (1);
 	data->all_eaten = 0;
@@ -56,7 +56,6 @@ void	init_forks(t_data *data)
 		pthread_mutex_init(&data->forks[i], NULL);
 		i++;
 	}
-	i = 0;
 	data->philos[0].left_fork = &data->forks[0];
 	data->philos[0].right_fork = &data->forks[data->num_philo - 1];
 	i = 1;
