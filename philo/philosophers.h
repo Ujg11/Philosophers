@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:47 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/27 12:56:46 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:19:02 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_data
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	write;
+	pthread_mutex_t	eat_mutex;
+	pthread_mutex_t	think_mutex;
 }				t_data;
 
 typedef struct s_philo
@@ -67,6 +69,7 @@ int			is_a_num(char *s);
 int			ft_atoi_basic(const char *str);
 uint64_t	get_time(void);
 char		*str_state(int action);
+int			ft_usleep(useconds_t t);
 
 //init.c
 int			init_all(t_data *data, char **argv, int argc);

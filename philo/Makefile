@@ -6,14 +6,14 @@
 #    By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/25 11:28:37 by ojimenez          #+#    #+#              #
-#    Updated: 2023/11/15 15:44:11 by ojimenez         ###   ########.fr        #
+#    Updated: 2023/12/27 15:00:44 by ojimenez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 HEADER = philosophers.h
 

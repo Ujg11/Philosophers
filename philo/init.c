@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:10 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/11/15 13:15:46 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:08:41 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	init_data(t_data *data, char **argv, int argc)
 	data->dead = 0;
 	pthread_mutex_init(&data->write, NULL);
 	pthread_mutex_init(&data->lock, NULL);
+	pthread_mutex_init(&data->eat_mutex, NULL);
+	pthread_mutex_init(&data->think_mutex, NULL);
 	return (0);
 }
 

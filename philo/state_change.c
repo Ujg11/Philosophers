@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:39:52 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/11/15 13:02:25 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:11:52 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,33 @@ void	print_message(int action, t_philo *philo)
 	pthread_mutex_unlock(&philo->data->write);
 }
 
-void	thread_eat_and_sleep(t_philo *philo)
+void	take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
 	print_message(FORK, philo);
 	pthread_mutex_lock(philo->left_fork);
 	print_message(FORK, philo);
+}
+
+void	drop_forks(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_unlock(philo->left_fork);
+	print_message(SLEEPING, philo);
+	ft_usleep(philo->data->time_to_sleep);
+}
+
+void	thread_eat_and_sleep(t_philo *philo)
+{
+	take_forks(philo);
 	pthread_mutex_lock(&philo->lock);
 	philo->action = EATING;
 	philo->time_to_die = get_time() + philo->data->time_to_die;
 	print_message(EATING, philo);
 	philo->number_of_eats++;
-	usleep(philo->data->time_to_eat * 1000);
+	ft_usleep(philo->data->time_to_eat);
 	philo->action = SLEEPING;
 	pthread_mutex_unlock(&philo->lock);
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
-	print_message(SLEEPING, philo);
-	usleep(philo->data->time_to_sleep * 1000);
+	drop_forks(philo);
 	philo->action = THINKING;
 }

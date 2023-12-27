@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:28:57 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/10/27 11:38:30 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:35:29 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,14 @@ char	*str_state(int action)
 		return ("has taken a fork");
 	else
 		return ("ERROR");
+}
+
+int	ft_usleep(useconds_t t)
+{
+	u_int64_t	t_ini;
+
+	t_ini = get_time();
+	while ((get_time() - t_ini) < t)
+		usleep(t / 10);
+	return (0);
 }
